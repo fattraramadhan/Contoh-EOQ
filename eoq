@@ -1,0 +1,25 @@
+C=int(input('Biaya pemesanan=$'))
+R=int(input('Kebutuhan(unit)='))
+F=float(input('Biaya penyimpanan fraksional='))
+L=int(input('Lead time(minggu)='))
+P1=int(input('Harga pembelian tanpa diskon=$'))
+P2=int(input('Harga pembelian diskon=$'))
+X=int(input('Minimal pembelian dengan diskon(unit)='))
+import math
+Q1=math.sqrt((2*C*R)/(P1*F))
+Q2=math.sqrt((2*C*R)/(P2*F))
+if(Q2>=X):
+    Q=Q2
+    P=P2
+else:
+    Q=Q1
+    P=P1
+m=R/Q
+T=1/m
+B=(R*L)/52
+TC=(P*R)+((P*F)*Q)
+print('Pemesanan optional', Q, 'unit/pemesanan')
+print('Jumlah pemesanan', m, 'pemesanan/tahun')
+print('Interval pemesanan', T)
+print('Reorder point', B, 'unit')
+print('Biaya persediaan $', TC)
